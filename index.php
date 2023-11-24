@@ -38,7 +38,7 @@
                     echo "Seus dados foram enviados!";
 
                     $cadastro = fopen("Cadastro.txt","a");
-                    fwrite($cadastro, "\nNome: $nome \n");
+                    fwrite($cadastro, "Nome: $nome \n");
                     fwrite($cadastro, "CPF: $cpf \n");
                     fwrite($cadastro, "Telefone: $tele \n");
                     fwrite($cadastro, "Email: $mail \n");
