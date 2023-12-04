@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>Cadastro</title>
+</head>
+<body>
+    <main>
+        <h1>Cadastre-se</h1>
+        <form action="infocadastro.php" method="post">
+            <label for="name">Nome:</label>
+            <input type="text" name="nome" id="nome" autocomplete="off">
+            
+            <label for="cpf">CPF:</label>
+            <input type="number" name="cpf" id="cpf" autocomplete="off">
+
+            <label for="tele">Telefone:</label>
+            <input type="number" name="tele" id="tele" autocomplete="off">
+
+            <label for="mail">Email:</label>
+            <input type="email" name="mail" id="mail" autocomplete="off">
+
+            <input type="submit" value="enviar">
+        </form>
+    </main>
+</body>
+</html>
