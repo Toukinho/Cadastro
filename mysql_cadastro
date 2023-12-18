@@ -1,0 +1,13 @@
+create database cadastro
+default character set utf8
+default collate utf8_general_ci;
+
+create table pessoa(
+`id` int not null auto_increment,
+`nome` varchar(30),
+`cpf` varchar(30),
+`telefone` int(9),
+`email` varchar(30),
+data_de_criacao timestamp,
+primary key (id)
+)default charset = utf8;
