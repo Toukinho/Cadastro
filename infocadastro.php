@@ -26,15 +26,27 @@
                 function formatarCPF($cpf) {
                     // Remover caracteres não numéricos
                     $cpf = preg_replace('/[^0-9]/', '', $cpf);
-                
                     // Adicionar a formatação
                     $cpfFormatado = substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
-                
                     return $cpfFormatado;
                 }
-                
                 $cpfFormatado = formatarCPF($cpf);
 
+                //ligando com my sql
+                $conn = new mysqli('localhost', 'root', '', "cadastro");
+                // Verifica a conexão
+                if ($conn->connect_error) {
+                    echo "Conexão falhou: " . $conn->connect_error;
+                }
+
+                $sql = "INSERT INTO pessoa (nome, cpf, telefone, email) VALUES ('$nome', '$cpfFormatado', '$tele', '$email')";
+                // Executa o codigo my sql acima
+                if ($conn->query($sql) === TRUE) {
+                    echo ("Cadastro feito com sucesso.");
+                } else {
+                    echo "Erro ao inserir os dados do cadastro: " . $conn->error;
+                }
+                /*
                 //cria e escreve o arquivo.txt
                 $cadastro = fopen("Cadastro.txt","w");
                 fwrite($cadastro, "Nome: $nome \n");
@@ -42,7 +54,9 @@
                 fwrite($cadastro, "Telefone: $tele \n");
                 fwrite($cadastro, "Email: $email \n");
                 fclose($cadastro);
-                
+                */
+
+                /*
                 //enviando o email
                 try {       
                     //informações do server
@@ -63,7 +77,7 @@
                     $mail->addReplyTo('jonhlukelima@gmail.com', 'Informacao Teste');
 
                     //Manda o arquivo junto do email
-                    $mail->addAttachment('/opt/lampp/htdocs/apredendo-php/stalo/cadastro/Cadastro.txt');
+                    $mail->addAttachment('path do arquivo');
 
                     //Conteúdo
                     $mail->isHTML(true);
@@ -76,6 +90,7 @@
                 } catch (Exception $e) {
                     echo "O email não foi enviado Mailer Error: {$mail->ErrorInfo}";
                 }
+                */
                 
             }
 
