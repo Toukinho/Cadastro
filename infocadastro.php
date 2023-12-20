@@ -16,12 +16,10 @@
             
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $user = new UserInfo();
-                $mail = new email();
-                $mail->addArquivo('/opt/lampp/htdocs/apredendo-php/stalo/cadastro/Cadastro.txt');
-                $mail->enviarEmail($u);
+                //$mail = new email();
+                //$mail->addArquivo('cadastro/Cadastro.txt');
+                //$mail->enviarEmail($u);
 
-
-                /*
                 //cria e escreve o arquivo.txt
                 $cadastro = fopen("Cadastro.txt","w");
                 fwrite($cadastro, "Nome: $nome \n");
@@ -29,10 +27,6 @@
                 fwrite($cadastro, "Telefone: $tele \n");
                 fwrite($cadastro, "Email: $email \n");
                 fclose($cadastro);
-                */
-
-                
-                
             }
 
 ?>
