@@ -19,7 +19,6 @@
             public function __construct() {
                 $this->infoDoUser();
                 $this->formatarCPF($this->cpf);
-                $this->enviarDb();
             }
 
             //interface
@@ -35,26 +34,6 @@
                 $this->cpf = preg_replace('/[^0-9]/', '', $cpf);
                 // Adicionar a formatação
                 $this->cpfFormatado = substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
-            }
-
-            function enviarDb(){
-                //ligando com my sql
-                $conn = new mysqli('localhost', 'root', '', "cadastro");
-                // Verifica a conexão
-                if ($conn->connect_error) {
-                    echo "Conexão falhou: " . $conn->connect_error;
-                }
-
-                $sql = "INSERT INTO pessoa (nome, cpf, telefone, email) VALUES ('$this->nome', '$this->cpfFormatado', '$this->tele', '$this->email')";
-                // Executa o codigo my sql acima
-                if ($conn->query($sql) === TRUE) {
-                    echo ("Cadastro feito com sucesso.");
-                } else {
-                    echo "Erro ao inserir os dados do cadastro: " . $conn->error;
-                }
-
-                // Fecha a conexão
-                $conn->close();
             }
 
             //getters e setters das variaveis

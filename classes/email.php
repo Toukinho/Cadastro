@@ -40,7 +40,7 @@
             }
 
             //interface
-            function addArquivo($path){ //colocar o caminho do arquivo a ser enviado no path
+            function addArquivo($path){ //colocar o caminho do arquivo a ser enviado na variavel path
                 $this->mail->addAttachment($path);
             }
 

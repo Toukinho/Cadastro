@@ -9,7 +9,6 @@
     <?php 
         interface InterUserInfo{
             function infoDoUser();
-            function enviarDb();
         }
     ?>
 </body>

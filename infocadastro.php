@@ -12,21 +12,29 @@
         <?php 
             require_once 'classes/userInfo.php';
             require_once 'classes/email.php';
-
+            require_once 'classes/arquivo.php';
+            require_once 'classes/sendDB.php';
             
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
                 $user = new UserInfo();
-                //$mail = new email();
-                //$mail->addArquivo('cadastro/Cadastro.txt');
-                //$mail->enviarEmail($u);
+                
+                /* Enviando para o db 
+                $db = new sendDB();
+                $db->enviarDB($user);
+                */
 
-                //cria e escreve o arquivo.txt
-                $cadastro = fopen("Cadastro.txt","w");
-                fwrite($cadastro, "Nome: $nome \n");
-                fwrite($cadastro, "CPF: $cpfFormatadi hate o \n");
-                fwrite($cadastro, "Telefone: $tele \n");
-                fwrite($cadastro, "Email: $email \n");
-                fclose($cadastro);
+                /* Email com arquivo
+                $mail = new email();
+                $mail->enviarEmail($user);
+                $mail->addArquivo(stalo/cadastro/cadastro.txt);
+                */
+                
+                /* Testando o metodo criar arquivo
+                $arc = new arquivo();
+                $arc->abrirArquivo();
+                $arc->escrever($user);
+                function fecharArquivo();
+                */
             }
 
 ?>

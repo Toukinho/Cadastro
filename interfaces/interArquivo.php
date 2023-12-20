@@ -8,8 +8,9 @@
 <body>
     <?php 
         interface interArquivo{
-            function criarArquivo();
-            function escrever();
+            function abrirArquivo();
+            function escrever($u);
+            function fecharArquivo();
         }
     ?>
 </body>
