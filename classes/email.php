@@ -26,7 +26,7 @@
                 $this->mail->Host       = 'smtp.gmail.com';                     
                 $this->mail->SMTPAuth   = true;                                   
                 $this->mail->Username   = 'jonhlukelima@gmail.com';                     
-                $this->mail->Password   = 'vdkewohldnkzbaey';                               
+                $this->mail->Password   = 'segredo';                               
                 $this->mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            
                 $this->mail->Port       = 465;
                 //de onde sai
