@@ -10,87 +10,28 @@
     <main>
         <h1>Informacoes do cadastro</h1>
         <?php 
-            use PHPMailer\PHPMailer\PHPMailer;
-            use PHPMailer\PHPMailer\SMTP;
-            use PHPMailer\PHPMailer\Exception;
+            require_once 'classes/userInfo.php';
+            require_once 'classes/email.php';
 
-            require 'vendor/autoload.php';
-
+            
             if($_SERVER['REQUEST_METHOD'] == 'POST'){
-                //info do form
-                $nome = $_POST['nome'];
-                $cpf = $_POST['cpf'];
-                $tele = $_POST['tele'];
-                $email = $_POST['mail'];
+                $user = new UserInfo();
+                $mail = new email();
+                $mail->addArquivo('/opt/lampp/htdocs/apredendo-php/stalo/cadastro/Cadastro.txt');
+                $mail->enviarEmail($u);
 
-                function formatarCPF($cpf) {
-                    // Remover caracteres não numéricos
-                    $cpf = preg_replace('/[^0-9]/', '', $cpf);
-                    // Adicionar a formatação
-                    $cpfFormatado = substr($cpf, 0, 3) . '.' . substr($cpf, 3, 3) . '.' . substr($cpf, 6, 3) . '-' . substr($cpf, 9, 2);
-                    return $cpfFormatado;
-                }
-                $cpfFormatado = formatarCPF($cpf);
 
-                //ligando com my sql
-                $conn = new mysqli('localhost', 'root', '', "cadastro");
-                // Verifica a conexão
-                if ($conn->connect_error) {
-                    echo "Conexão falhou: " . $conn->connect_error;
-                }
-
-                $sql = "INSERT INTO pessoa (nome, cpf, telefone, email) VALUES ('$nome', '$cpfFormatado', '$tele', '$email')";
-                // Executa o codigo my sql acima
-                if ($conn->query($sql) === TRUE) {
-                    echo ("Cadastro feito com sucesso.");
-                } else {
-                    echo "Erro ao inserir os dados do cadastro: " . $conn->error;
-                }
                 /*
                 //cria e escreve o arquivo.txt
                 $cadastro = fopen("Cadastro.txt","w");
                 fwrite($cadastro, "Nome: $nome \n");
-                fwrite($cadastro, "CPF: $cpfFormatado \n");
+                fwrite($cadastro, "CPF: $cpfFormatadi hate o \n");
                 fwrite($cadastro, "Telefone: $tele \n");
                 fwrite($cadastro, "Email: $email \n");
                 fclose($cadastro);
                 */
 
-                /*
-                //enviando o email
-                try {       
-                    //informações do server
-                    $mail = new PHPMailer(true);              
-                    $mail->isSMTP();                                            
-                    $mail->Host       = 'smtp.gmail.com';                     
-                    $mail->SMTPAuth   = true;                                   
-                    $mail->Username   = 'jonhlukelima@gmail.com';                     
-                    $mail->Password   = 'segredo';                               
-                    $mail->SMTPSecure = PHPMailer::ENCRYPTION_SMTPS;            
-                    $mail->Port       = 465;
-
-                    //de onde sai
-                    $mail->setFrom('jonhlukelima@gmail.com', 'João');
-                    //para onde vai
-                    $mail->addAddress($email, $nome);   
-                    //replay  
-                    $mail->addReplyTo('jonhlukelima@gmail.com', 'Informacao Teste');
-
-                    //Manda o arquivo junto do email
-                    $mail->addAttachment('path do arquivo');
-
-                    //Conteúdo
-                    $mail->isHTML(true);
-                    $mail->Subject = 'Cadastro';
-                    $mail->Body    = 'Teste';
-                    
-                    //email enviado!!!
-                    $mail->send();
-                    echo 'A mensagem foi enviada';
-                } catch (Exception $e) {
-                    echo "O email não foi enviado Mailer Error: {$mail->ErrorInfo}";
-                }
-                */
+                
                 
             }
 
